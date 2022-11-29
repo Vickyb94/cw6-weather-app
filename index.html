@@ -14,5 +14,36 @@
     <header class="container-fluid text-center text-white bg-dark p-2">
         <h1>Weather Dashboard</h1>
     </header>
+    
+    <div id="content" class="container">
+        <div class="row">
+            <div id="content-left" class="col-md-3">
+                <form>
+                    <label for="search-city">Enter City:</label>
+                    <div class="form-row">
+                        <input id="search-city" class="form-control" name="city" value="Austin"></input>
+                        <button id="search-button" class="btn btn-primary" type="submit">Search</i></button>
+                    </div>
+                </form>
+            </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                         <ul id="searchHistory" class="list-group"></ul>
+                    </div>
+                </div>
+
+            <div id="weatherContent" class="col-9 pb-4 pt-4">
+                <div class="row pb-3 mr-2 ml-2">
+                    <div id="cityInfo" class="col-12 border rounded px-3 py-3"></div>
+                </div>
+            </div>
+
+            <div id="content-right" class="col-md-9 pt-4">
+                <div id="current-weather" class="border rounded"></div>
+                <div id="5-day-forecast" class="mt-5"></div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

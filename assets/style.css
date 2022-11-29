@@ -4,3 +4,7 @@ h1 {
     letter-spacing: 3px;
     color: whitesmoke;
 }
+#search-button-icon{
+    width:15px;
+    display:inline-block;
+}
