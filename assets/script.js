@@ -72,15 +72,31 @@ function weatherForecast(lat, lon) {
         $("#5-Day").empty();
      //for loop to generate weather forecate for five days   
         for (let i = 1; i < 6; i++) {
-            var cityInfo = {
+            var cityDetail = {
                 date: forecastData.daily[i].dt,
                 icon: forecastData.daily[i].weather[0].icon,
                 temp: forecastData.daily[i].temp.day,
                 humidity: forecastData.daily[i].humidity
             };
         }
-        });
+    });
 
+        var currentDate = moment.unix(cityDetail.date).format("MM/DD/YYYY");
+        var iconURL = `<img src="https://openweathermap.org/img/w/${cityDetail.icon}.png" alt="${forecastData.daily[i].weather[0].main}" />`;
 
+        //using jQuery to create div,<h5>,<p> to display weather conditions for the five day forecast//
+        var forecastDisplay = $(`
+        <div class="pl-3">
+            <div class="card pl-3 pt-3 mb-3 bg-primary text-light" style="width: 12rem;>
+                <div class="card-body">
+                    <h5>${currentDate}</h5>
+                    <p>${iconURL}</p>
+                    <p>Temp: ${cityDetail.temp} °F</p>
+                    <p>Humidity: ${cityDetail.humidity}\%</p>
+                </div>
+            </div>
+        <div>
+    `);
 
+    $("#5-Day").append(forecastDisplay);
 };
