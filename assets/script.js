@@ -18,6 +18,31 @@ function liveWeather(city) {
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        
+        //response to display live weather condition and city name//
+        $("#currentWeather").css("display", "block");
+        $("#currentCity").empty();
+       
+        //setting icons to represent weather conditions for set city//
+        var iconCode = cityWeatherResponse.weather[0].icon;
+        var iconURL = `https://openweathermap.org/img/w/${iconCode}.png`;
+        var currentCity = $(`
+        <h2 id="currentCity">
+            ${cityWeatherResponse.name} ${today} <img src="${iconURL}" alt="${cityWeatherResponse.weather[0].description}" />
+        </h2>
+        <p>Temperature: ${cityWeatherResponse.main.temp} °F</p>
+        <p>Humidity: ${cityWeatherResponse.main.humidity}\%</p>
+        <p>Wind Speed: ${cityWeatherResponse.wind.speed} MPH</p>
+    `);
+
+
+
+
+
+
+
+
+
+
+
     });
 }
