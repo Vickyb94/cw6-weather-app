@@ -116,3 +116,8 @@ $("#searchBtn").on("click", function(event) {
     localStorage.setItem("city", JSON.stringify(searchHistoryList));
     console.log(searchHistoryList);
 });
+//function to display forecast of searched cities saved in search history
+$(document).on("click", ".list-group-item", function() {
+    var listCity = $(this).text();
+    liveWeather(listCity);
+});
