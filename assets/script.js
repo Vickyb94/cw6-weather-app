@@ -1,9 +1,11 @@
 //list of variables
 var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 var apiKey = "d1e2d0763204896fd894698f5c6e27ee";
-var waetherIcon = cityWeatherResponse.weather[0].icon;
+var weatherIcon = cityWeatherResponse.weather[0].icon;
 var iconURL = `https://openweathermap.org/img/w/${iconCode}.png`;
 var current = moment().format('L');
+var city = [];
+var cityWeatherResponse = [];
 var searchHistoryList = [];
 var lat = cityWeatherResponse.coord.lat;
 var lon = cityWeatherResponse.coord.lon;
@@ -97,6 +99,20 @@ function weatherForecast(lat, lon) {
             </div>
         <div>
     `);
-
     $("#5-Day").append(forecastDisplay);
 };
+//adding click event listener to search button
+$("#searchBtn").on("click", function(event) {
+    event.preventDefault();
+
+    var city = $("#searchCity").val().trim();
+    liveWeather(city);
+    if (!searchHistoryList.includes(city)) {
+        searchHistoryList.push(city);
+        var displayedCity = $(` <li class="list-group-item">${city}</li> `);
+        $("#searchHistory").append(displayedCity);
+    };
+    //saving search history list to 
+    localStorage.setItem("city", JSON.stringify(searchHistoryList));
+    console.log(searchHistoryList);
+});
