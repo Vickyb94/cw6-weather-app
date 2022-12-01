@@ -22,10 +22,10 @@ function liveWeather(city) {
         $("#currentWeather").css("display", "block");
         $("#currentCity").empty();
        
-        //setting icons to represent weather conditions for set city//
+        //setting icons to represent weather conditions for seearched city//
         var iconCode = cityWeatherResponse.weather[0].icon;
         var iconURL = `https://openweathermap.org/img/w/${iconCode}.png`;
-        var currentCity = $(`
+        var searchedCity = $(`
         <h2 id="currentCity">
             ${cityWeatherResponse.name} ${today} <img src="${iconURL}" alt="${cityWeatherResponse.weather[0].description}" />
         </h2>
@@ -33,6 +33,28 @@ function liveWeather(city) {
         <p>Humidity: ${cityWeatherResponse.main.humidity}\%</p>
         <p>Wind Speed: ${cityWeatherResponse.wind.speed} MPH</p>
     `);
+    //append #currentcity to searched City
+    $("#currentCity").append(searchedCity);
+ //using var lat and var lon to execute a current condition to get UV Index from weather api//
+    var lat = cityWeatherResponse.coord.lat;
+    var lon = cityWeatherResponse.coord.lon;
+    var uviApiURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    $.ajax({
+        url: uviApiURL,
+        method: "GET"
+    }).then(function(uviData) {
+        console.log(uviData);
+
+        var uvIndex = uviData.value;
+        //creating a <p> to display the value of UV Index on webpage//
+        var uvIndexP = $(`
+            <p>UV Index: 
+                <span id="uvIndexColor" class="px-2 py-2 rounded">${uvIndex}</span>
+            </p>
+        `);
+
+        $("#currentCity").append(uvIndexP);
 
 
 
