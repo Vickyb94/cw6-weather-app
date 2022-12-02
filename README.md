@@ -9,7 +9,7 @@ The user loads the page and is presented with a search box to find preferred cit
 The user loads the page and enters a city, the user is presented with current and future conditions for that city and that city is added to the search history. When user views current weather conditions for that city, city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed are displayed. User can also view five-day forecast of the search city. When user clicks on city in search history, user is presented with current and future conditions for that city.
 
 ![alt text](./assets/images/Screenshot%202022-12-01%20213143.png)
-Deployed URL : 
+Deployed URL : https://vickyb94.github.io/cw6-weather-app/
 
 ## License
 MIT License
